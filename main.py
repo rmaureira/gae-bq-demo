@@ -42,6 +42,12 @@ class MainPage(webapp2.RequestHandler):
         else:
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
+			    template_values = {
+				'user': user,
+				'url': url,
+				'url_linktext': url_linktext
+	    	}
+
             template = JINJA_ENVIRONMENT.get_template('nologin.html')
 
         self.response.write(template.render(template_values))
